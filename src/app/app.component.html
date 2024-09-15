@@ -1,0 +1,71 @@
+<main>
+
+    <button (click)="showChildComp1()" mat-raised-button class="showButtons">Показать цитаты</button>
+    <button (click)="showChildComp2()" mat-raised-button class="showButtons">Показать биографию</button>
+    <button (click)="showChildComp3()" mat-raised-button class="showButtons">Показать ссылки</button>
+    <button (click)="showAll()" mat-raised-button class="showButtons">Показать всю страницу</button>
+
+    <div [ngSwitch] = "toShow">
+        <ng-template ngSwitchCase="show1">
+            
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Напишите свою цитату</mat-label>
+                  <input matInput [(ngModel)]="newCiteMy">
+                </mat-form-field>     
+            </form>
+        
+            <child1_comp [newCite]="newCiteMy"></child1_comp>
+            <mat-divider></mat-divider>   
+        </ng-template>
+    
+        <ng-template ngSwitchCase="show2">
+            <child2_comp></child2_comp>
+            <mat-divider></mat-divider>
+        </ng-template>
+    
+        <ng-template ngSwitchCase="show3">
+            <form class="example-form myForm">
+                <mat-form-field class="example-full-width myField">
+                    <mat-label>Напишите свою ссылку</mat-label>
+                    <input matInput [(ngModel)]="newL[0]">
+                </mat-form-field>
+                <mat-form-field class="example-full-width myField">
+                    <mat-label>Напишите описание ссылки</mat-label>
+                    <input matInput [(ngModel)]="newL[1]">
+                </mat-form-field>
+            </form>
+            <child3_comp [myLink]="newLink" [myAbout]="newLinkAbout" [newLink]="newL"></child3_comp>
+        </ng-template>
+
+        <ng-template ngSwitchCase="showAll">
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Напишите свою цитату</mat-label>
+                  <input matInput [(ngModel)]="newCiteMy">
+                </mat-form-field>     
+            </form>
+        
+            <child1_comp [newCite]="newCiteMy"></child1_comp>
+            <mat-divider></mat-divider>   
+            <child2_comp></child2_comp>
+            <mat-divider></mat-divider>
+            
+            <form class="example-form myForm">
+                <mat-form-field class="example-full-width myField">
+                    <mat-label>Напишите свою ссылку</mat-label>
+                    <input matInput [(ngModel)]="newL[0]">
+                </mat-form-field>
+                <mat-form-field class="example-full-width myField">
+                    <mat-label>Напишите описание ссылки</mat-label>
+                    <input matInput [(ngModel)]="newL[1]">
+                </mat-form-field>
+            </form>
+            <child3_comp [myLink]="newLink" [myAbout]="newLinkAbout" [newLink]="newL"></child3_comp>
+        </ng-template>
+    </div>
+</main>
+    
+ 
+ 
+ 
